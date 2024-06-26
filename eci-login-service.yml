@@ -1,0 +1,17 @@
+server:
+    servlet:
+        context-path: /eci-login
+    port: 0
+
+spring:
+    application:
+        name: eci-login-service
+
+logging:
+    level:
+        br:
+            econect:
+                eci:
+                    login: INFO
+        root: INFO
+

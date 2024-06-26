@@ -1,0 +1,78 @@
+server:
+    port: 9595
+
+logging:
+    level:
+        br:
+            econect:
+                eci:
+                    gatewayservice: INFO
+        root: INFO
+
+spring:
+    application:
+        name: eci-gateway-service
+    cloud:
+        gateway:
+            default-filters:
+                - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            globalcors:
+                add-to-simple-url-handler-mapping: true
+                cors-configurations:
+                    '[/**]':
+                        allowedHeaders: "*"
+                        allowedOrigins: "*"
+                        allowedMethods: "*"
+            discovery:
+                locator:
+                    enabled: true
+                    lower-case-service-id: true
+            routes:
+                -   id: id-route-eci-login
+                    uri: lb://eci-login-service
+                    predicates:
+                        - Path=/eci-login/**
+                -   id: id-route-classifmerc
+                    uri: lb://eci-classifmerc-service
+                    predicates:
+                        - Path=/eci-classifmerc/**
+                -   id: id-route-preco
+                    uri: lb://eci-preco-service
+                    predicates:
+                        - Path=/eci-preco/**
+                -   id: id-route-produto
+                    uri: lb://eci-produto-service
+                    predicates:
+                        - Path=/eci-produto/**
+                -   id: id-route-promocao
+                    uri: lb://eci-promocao-service
+                    predicates:
+                        - Path=/eci-promocao/**
+                -   id: id-route-usuario
+                    uri: lb://eci-usuario-service
+                    predicates:
+                        - Path=/eci-usuario/**
+                -   id: id-route-cliente
+                    uri: lb://eci-cliente-service
+                    predicates:
+                        - Path=/eci-cliente/**
+                -   id: id-route-pedido
+                    uri: lb://eci-pedido-service
+                    predicates:
+                        - Path=/eci-pedido/**
+                -   id: id-route-autorizador-oper
+                    uri: lb://eci-autorizador-oper-service
+                    predicates:
+                        - Path=/eci-autorizador-oper/**
+                -   id: id-route-campanha
+                    uri: lb://eci-campanha-service
+                    predicates:
+                        - Path=/eci-campanha/**
+                -   id: id-route-audit-operacao
+                    uri: lb://eci-audit-operacao-service
+                    predicates:
+                        - Path=/eci-audit-operacao/**
+                -   id: id-route-cert-digital
+                    uri: lb://eci-cert-digital-service
+                    predicates:
+                        - Path=/eci-cert-digital/**

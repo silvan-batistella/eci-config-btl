@@ -1,0 +1,24 @@
+server:
+    servlet:
+        context-path: /eci-audit-operacao
+    port: 0
+
+spring:
+    application:
+        name: eci-audit-operacao-service
+    data:
+        mongodb:
+            host: localhost
+            port: 27017
+            database: eci_auditoper
+            username: root
+            password: B4nc0my5q1
+            auto-index-creation: true
+
+logging:
+    level:
+        br:
+            econect:
+                eci:
+                    auditoperacao: INFO
+        root: INFO
