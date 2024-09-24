@@ -8,7 +8,7 @@ spring:
         name: eci-cliente-service
     datasource:
         driver-class-name: com.mysql.jdbc.Driver
-        username: root
+        username: econect
         password: 12345
         url: jdbc:mysql://localhost:3306/eci_cliente?createDatabaseIfNotExist=true
         testWhileIdle: true
